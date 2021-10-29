@@ -13,9 +13,6 @@ describe('Employee', () => {
         it(`should return an object 'Employee' with a string value to the property 'email' when called with the new keyword.`, () => {
             expect(new Employee('Ryan', 1, 'ryan@email.com').email).toEqual('ryan@email.com');
         })
-        it(`should return an object 'Employee' with the value 'Employee' to the property 'role' when called with the new keyword.`, () => {
-            expect(new Employee().role).toEqual('Employee');
-        })
     });
 
     describe('getName', () => {
@@ -37,8 +34,8 @@ describe('Employee', () => {
     })
 
     describe('getEmail', () => {
-        it(`should return the property 'role'`, () => {
-            expect(new Employee().role).toEqual('Employee');
+        it(`should return the property 'role' with the value 'Employee'`, () => {
+            expect(new Employee().getRole()).toEqual('Employee');
         })
     })
 })
