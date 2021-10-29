@@ -64,14 +64,40 @@ function promptEngineer() {
         },
     ])
     .then((response) => {
-        engineerList.push(new Engineer(response.name, response.id, response.email, response.officeNumber));
+        engineerList.push(new Engineer(response.name, response.id, response.email, response.github));
         console.log('Engineer successfully added to the team.');
         promptContinue();
     })
 }
 
 function promptIntern() {
-    
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the name of this intern?',
+            name: 'name',
+        },
+        {
+            type: 'input',
+            message: 'What is the id of this intern?',
+            name: 'id',
+        },
+        {
+            type: 'input',
+            message: 'What is the email of this intern?',
+            name: 'email',
+        },
+        {
+            type: 'input',
+            message: 'What is the school that this intern attends?',
+            name: 'school',
+        },
+    ])
+    .then((response) => {
+        internList.push(new Intern(response.name, response.id, response.email, response.school));
+        console.log('Intern successfully added to the team.');
+        promptContinue();
+    })
 }
 
 function promptContinue() {
