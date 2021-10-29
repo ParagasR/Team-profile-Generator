@@ -41,9 +41,37 @@ function promptManager() {
 }
 
 function promptEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the name of this engineer?',
+            name: 'name',
+        },
+        {
+            type: 'input',
+            message: 'What is the id of this engineer?',
+            name: 'id',
+        },
+        {
+            type: 'input',
+            message: 'What is the email of this engineer?',
+            name: 'email',
+        },
+        {
+            type: 'input',
+            message: 'What is the github username of this engineer?',
+            name: 'github',
+        },
+    ])
+    .then((response) => {
+        engineerList.push(new Engineer(response.name, response.id, response.email, response.officeNumber));
+        console.log('Engineer successfully added to the team.');
+        promptContinue();
+    })
 }
 
 function promptIntern() {
+    
 }
 
 function promptContinue() {
