@@ -1,12 +1,10 @@
 const inquirer = require('inquirer');
+const generate = require('./generateHTML');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { LVAL_TYPES } = require('@babel/types');
 
-var manager;
-var engineerList = [];
-var internList = [];
+var employeeList = []
 
 promptManager()
 
@@ -34,7 +32,7 @@ function promptManager() {
         },
     ])
     .then((response) => {
-        manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+        employeeList.push(new Manager(response.name, response.id, response.email, response.officeNumber));
         console.log('Manager successfully added to the team.');
         promptContinue();
     })
@@ -64,7 +62,7 @@ function promptEngineer() {
         },
     ])
     .then((response) => {
-        engineerList.push(new Engineer(response.name, response.id, response.email, response.github));
+        employeeList.push(new Engineer(response.name, response.id, response.email, response.github));
         console.log('Engineer successfully added to the team.');
         promptContinue();
     })
@@ -94,7 +92,7 @@ function promptIntern() {
         },
     ])
     .then((response) => {
-        internList.push(new Intern(response.name, response.id, response.email, response.school));
+        employeeList.push(new Intern(response.name, response.id, response.email, response.school));
         console.log('Intern successfully added to the team.');
         promptContinue();
     })
@@ -117,6 +115,7 @@ function promptContinue() {
         } else {
             console.log(`Generating team page...`);
             //call function to get to generating the html page
+            generate.generateText(employeeList, employeeList.length);
         }
     })
 }
