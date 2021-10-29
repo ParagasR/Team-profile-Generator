@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const { LVAL_TYPES } = require('@babel/types');
 
 var manager;
 var engineerList = [];
@@ -34,18 +35,34 @@ function promptManager() {
     ])
     .then((response) => {
         manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+        console.log('Manager successfully added to the team.');
         promptContinue();
     })
 }
 
 function promptEngineer() {
-    
 }
 
 function promptIntern() {
-    
 }
 
 function promptContinue() {
-
+    console.log('Select the type of employee: ')
+    inquirer.prompt([
+        {
+            type: 'list',
+            choices: ['Engineer', 'Intern', 'Finish building team'],
+            name: 'selection',
+        },
+    ])
+    .then((response) => {
+        if(response.selection === 'Engineer') {
+            promptEngineer();
+        } else if (response.selection === 'Intern') {
+            promptIntern();
+        } else {
+            console.log(`Generating team page...`);
+            //call function to get to generating the html page
+        }
+    })
 }
