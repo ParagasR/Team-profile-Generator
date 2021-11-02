@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const generate = require('./generateHTML');
+const generate = require('./src/generateHTML');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -8,6 +8,7 @@ var employeeList = []
 
 promptManager()
 
+// start of the program, starts with manager
 function promptManager() {
     inquirer.prompt([
         {
@@ -32,8 +33,10 @@ function promptManager() {
         },
     ])
     .then((response) => {
+        //push new object to the main employee array
         employeeList.push(new Manager(response.name, response.id, response.email, response.officeNumber));
         console.log('Manager successfully added to the team.');
+        //directs to the continue to start structure tree
         promptContinue();
     })
 }
@@ -62,8 +65,10 @@ function promptEngineer() {
         },
     ])
     .then((response) => {
+        //push new object to the main employee array
         employeeList.push(new Engineer(response.name, response.id, response.email, response.github));
         console.log('Engineer successfully added to the team.');
+        //continues the structure tree
         promptContinue();
     })
 }
@@ -92,8 +97,10 @@ function promptIntern() {
         },
     ])
     .then((response) => {
+        //push new object to the main employee array
         employeeList.push(new Intern(response.name, response.id, response.email, response.school));
         console.log('Intern successfully added to the team.');
+        //continues the structure tree
         promptContinue();
     })
 }
@@ -109,8 +116,10 @@ function promptContinue() {
     ])
     .then((response) => {
         if(response.selection === 'Engineer') {
+            //if entering another Engineer, will return to the prompts to create another Engineer
             promptEngineer();
         } else if (response.selection === 'Intern') {
+            //if entering another Intern, will return to the prompts to create another Intern
             promptIntern();
         } else {
             console.log(`Generating team page...`);
