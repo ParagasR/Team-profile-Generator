@@ -9,6 +9,8 @@
   <ol>
     <li><a href="#description">Description</a></li>
     <li><a href="#install-instruct">Installation Instructions</a></li>
+    <li><a href="#demonstration">Demonstration</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#usage">Usage Information</a></li>
     <li><a href="#contribute">Contributors</a></li>
     <li><a href="#tests">Tests</a></li>
@@ -40,7 +42,7 @@ associated with their card. The engineers will have their github profile associa
 <br>
 
 
-<h2 id='demonstration'>Screenshots</h2>
+<h2 id='screenshots'>Screenshots</h2>
 
 <img src='./assets/images/website-preview.png' alt='website image+'><img src='./assets/images/terminal-preview.png' alt='terminal image'>
 <br>
